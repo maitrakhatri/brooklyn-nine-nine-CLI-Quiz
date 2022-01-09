@@ -1,15 +1,15 @@
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
-var playerName = readlineSync.question("Enter your Name: ");
+const playerName = readlineSync.question("Enter your Name: ");
 
-console.log("Welcome " + playerName + " !!")
+console.log(`Welcome ${playerName} !!`);
 console.log("Let's see how well do you know Brookly Nine Nine")
 console.log("---------------------")
 console.log("Let's Begin")
 console.log("---------------------")
 
-var score = 0
-var highestScore = [
+const score = 0
+const highestScore = [
 
   {
     name: "Maitra",
@@ -23,7 +23,7 @@ var highestScore = [
 ]
 
 
-var questions = [
+const questions = [
   {
     que: "For the Halloween heist episodes, the cast doesn't know who's going to win until they start filming. \n a. yes \n b. no \n",
     ans: "a"
@@ -74,33 +74,26 @@ var questions = [
     ans: "b"
   }
 
-
-
 ]
 
-
-
-function play(currentQue) {
-  var userAns = readlineSync.question(currentQue.que)
+const play = currentQue => {
+  const userAns = readlineSync.question(currentQue.que)
   if (userAns.toUpperCase() === currentQue.ans.toUpperCase()) {
     console.log("You are correct !!")
     score = score + 1;
-    console.log("Your current Score: ", score)
+    console.log(`Your current Score: ${score}`);
     console.log("---------------------")
   }
   else {
     console.log("You are incorrect :(")
-    console.log("Your current Score: ", score)
+    console.log(`Your current Score: ${score}`);
     console.log("---------------------")
   }
 }
 
-for (i = 0; i < questions.length; i++) {
-  var currentQue = questions[i];
-  play(currentQue)
-}
+questions.map(play);
 
-console.log("Your final score is: ", score)
+console.log(`Your final score is: ${score}`);
 console.log("---------------------")
 console.log("Share this and challenge your friends who claim to know Brookly Nine Nine better than you")
 
